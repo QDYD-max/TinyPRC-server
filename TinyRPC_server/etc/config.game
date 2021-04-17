@@ -1,0 +1,49 @@
+-- 基础配置
+skynetroot              = "./skynet/"
+start                   = "main"                    -- main script
+bootstrap               = "snlua bootstrap"         -- The service for bootstrap
+preload                 = "./lualib/preload.lua"    -- run preload.lua before every lua service run
+harbor                  = 0
+
+-- 服务路径配置
+localservice            = "./game/?.lua;./common/?.lua"
+luaservice              = skynetroot .. "service/?.lua;" .. localservice
+lualoader               = skynetroot .. "lualib/loader.lua"
+cpath                   = skynetroot .. "cservice/?.so;" .. "./cservice/?.so"
+lua_path                = skynetroot .. "lualib/?.lua;" ..
+                        "./lualib/?.lua;" ..
+                        "./game/?.lua;" ..
+                        "./config/?.lua.txt;"
+lua_cpath               = skynetroot .. "luaclib/?.so;" .. "./luaclib/?.so"
+
+thread                  = 2
+
+-- login config 基础配置
+port                    = 7006
+login_slave_num         = 4
+
+-- gamenode 配置
+gameip                  = "121.196.14.73"
+gameport                = 7106
+maxclient               = 100
+
+-- config 日志配置
+logger                  = "server.game,PERROR,NDELAY,LOCAL6,DEBUG"
+logservice              = "ninjalog"
+logpath                 = "."
+
+-- MongoDB 配置
+mongo_maxconn           = 10
+mongo_address           = "dds-tiny-s1.mongodb.rds.aliyuncs.com:3717,dds-tiny-s2.mongodb.rds.aliyuncs.com:3717"
+mongo_authdb            = "admin"
+mongo_db                = "group4"
+mongo_user              = "group4"
+mongo_pwd               = "L81I1c7Z"
+mongo_save_time         = 30
+
+-- 通用redis
+common_redis_maxconn    = 10
+common_redis_host       = "127.0.0.1"
+common_redis_port       = 6379
+common_redis_index      = 0
+common_redis_pwd        = "yhRedis123"

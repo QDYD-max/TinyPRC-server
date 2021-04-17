@@ -1,0 +1,15 @@
+local function reload_cfg_file(name)
+    local fullname = "CfgInfo." .. name
+    package.loaded[fullname] = nil
+    require(fullname)
+end
+
+reload_cfg_file("CfgBaseServerInfo") -- Remove this line in formal develop, and add real config file
+
+-- 游戏数据配置表
+NCONFIG = {}
+for k, v in pairs(_G) do
+    if string.find(k, "^Cfg") then
+        NCONFIG[k] = v
+    end
+end

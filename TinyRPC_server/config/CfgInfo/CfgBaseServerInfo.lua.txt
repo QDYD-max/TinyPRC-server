@@ -1,0 +1,5 @@
+-- Remove this file in formal develop
+
+CfgBaseServerMisc = {
+    NONE=0,
+}

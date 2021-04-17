@@ -1,0 +1,62 @@
+package NinjaMessage;
+
+
+//操作码，表示请求意图
+enum OPCODE
+{
+    NONE                = 0; // 空请求只用于网络检测
+    RPC_CALL            = 1; // 通用RPC
+    NOTIFY_INFO         = 2; // 服务端notify
+}
+
+
+//通知码
+enum NOTIFY_CODE
+{
+    NOTIFY_KICK_OFFLINE = 1; // 被踢下线通知
+}
+
+
+//标记码
+enum FLAG_CODE
+{
+    TESTCODE            = 1;
+}
+
+
+//消息包
+message Message
+{
+    required OPCODE opCode      = 1;
+    required int32 uid          = 2;
+    optional Request request    = 3;
+    optional Response response  = 4;
+    optional int32 timeNow      = 5; // 服务器时间
+    optional string device      = 6; // 设备信息串
+    optional NotifyInfo notifyInfo = 7;
+}
+
+
+//请求消息
+message Request
+{
+    optional string rpcFunc     = 1;
+    optional string rpcParams   = 2;
+}
+
+
+//返回消息
+message Response
+{
+    required int32 errorCode    = 1;
+    optional string rpcFunc     = 2;
+    optional string rpcRsp      = 3;
+}
+
+
+message NotifyInfo
+{
+    required int64 sequence    = 1;
+    optional string rpcFunc  = 2;
+    optional string rpcParams   = 3;
+}
